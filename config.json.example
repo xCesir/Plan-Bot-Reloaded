@@ -1,0 +1,21 @@
+{
+	"clientId": "",
+	"guildId": "",
+	"token": "",
+	"logChannelId": "",
+	"welcomeChannelId": "",
+	"welcomeMessageTitle": "Welcome",
+	"welcomeMessage": "$(member) joined us",
+	"goodbyeChannelId": "",
+	"goodbyeMessageTitle": "Goodbye!",
+	"goodbyeMessage": "Farewell $(member)!",
+	"autoRole": "",
+	"enableAutoRole": "false",
+	"logChannelCreate": "true",
+	"logChannelDelete": "true",
+	"logGuildBanAdd": "true",
+	"logGuildBanRemove": "true",
+	"logGuildRoleCreate": "true",
+	"logGuildRoleDelete": "true",
+	"logGuildRoleUpdate": "true"
+}
