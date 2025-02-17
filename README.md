@@ -17,7 +17,7 @@ Whether you're a developer looking to contribute or a server owner looking for a
 - **Dice Rolling**: Plan-Bot-Reloaded includes a fun dice rolling feature, allowing users to roll virtual dice with customizable sides. Whether you’re playing tabletop games or just adding some randomness to your server, you can quickly roll a die and get your results right in the chat.
 - **Coin Tossing**: With the coin tossing feature, Plan-Bot-Reloaded lets users flip a virtual coin for quick decisions or fun games. Simply toss the coin, and get a random result—heads or tails—right in the chat!
 - **Welcome and Goodbye Messages**: Plan-Bot-Reloaded can send personalized welcome and goodbye messages when users join or leave the server. Customize these messages to greet new members, introduce them to the community, and say farewell to those who depart, creating a more engaging and friendly environment.
-- **Activity Logging**: Plan-Bot-Reloaded keeps track of important server activities, providing logs for actions like bans, unbans, channel creations, deletions, and updates, as well as message, role changes, and voice state updates. This feature ensures that server administrators have a complete record of significant actions for better management and accountability.## Planned features
+- **Activity Logging**: Plan-Bot-Reloaded keeps track of important server activities, providing logs for actions like bans, unbans, channel creations, deletions, and updates, as well as message, role changes, and voice state updates. This feature ensures that server administrators have a complete record of significant actions for better management and accountability.
 
 ## Setup (exemplary for an Ubuntu 24.10)
 
