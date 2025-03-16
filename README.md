@@ -171,7 +171,7 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
 7. **Connect to the MariaDB database**:
    Access the MariaDB database:
    ```bash
-   mysql -u root -p -P 3306 sys
+   mariadb -u root -p -P 3306 sys
    ```
 
 8. **Create the channel duplication table**:
