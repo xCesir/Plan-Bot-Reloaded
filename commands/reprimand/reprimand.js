@@ -19,23 +19,22 @@ module.exports = {
 		.setContexts(InteractionContextType.Guild),
 	async execute(interaction) {
 		try {
-            const target = await interaction.options.getMember('target');
-            const targetId = target?.id;
-            const reason = await interaction.options.getString('reason') ?? 'No reason provided';
+			const target = await interaction.options.getMember('target');
+			const targetId = target?.id;
+			const reason = await interaction.options.getString('reason') ?? 'No reason provided';
 			const creatorId = await interaction.user.id;
 			const creatorName = await interaction.user.username;
-            const d = new Date();
+			const d = new Date();
 
-            console.log(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}`);
+			console.log(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}`);
 
-			
-            const rows = await dbquery('INSERT INTO reprimand(userID,reason,createdAt,creatorId,creatorName) value (?,?,?,?,?)', [targetId, reason, d, creatorId, creatorName]);
-            BigInt.prototype.toJSON = function() {
-                return JSON.rawJSON(this.toString());
-            };
-            console.log(JSON.stringify(rows));
+			const rows = await dbquery('INSERT INTO reprimand(userID,reason,createdAt,creatorId,creatorName) value (?,?,?,?,?)', [targetId, reason, d, creatorId, creatorName]);
+			BigInt.prototype.toJSON = function() {
+				return JSON.rawJSON(this.toString());
+			};
+			console.log(JSON.stringify(rows));
 			interaction.reply(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}\n`+JSON.stringify(rows, null, 2));
-        
+
 		}
 		catch (error) {
 			console.log('An error occurred in module "reprimand":\n' + error);
