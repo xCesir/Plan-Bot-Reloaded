@@ -31,6 +31,7 @@ module.exports = {
 				if (Object.prototype.hasOwnProperty.call(objs, key)) {
 							  reply = reply + '## Reprimand: ' + (+key + 1) + '\n';
 							  const obj = objs[key];
+							  reply = reply + 'ID: ' + obj.ID + '\n';
 							  reply = reply + 'userID: ' + obj.userID + '\n';
 							  reply = reply + 'reason: ' + obj.reason + '\n';
 							  reply = reply + 'creation date: ' + obj.createdAt + '\n';
