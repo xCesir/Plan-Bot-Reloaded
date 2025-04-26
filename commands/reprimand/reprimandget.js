@@ -18,13 +18,23 @@ module.exports = {
             };
             console.log(JSON.stringify(rows));
             //interaction.reply(JSON.stringify(rows, null, 2));
-            const reply = JSON.parse(JSON.stringify(rows, null, 2));
-            console.log(reply)
-            await interaction.reply({content: `Your reprimandings:\n${reply}`, flags: MessageFlags.Ephemeral });
+			var reply = ''
+            const objs = JSON.parse(JSON.stringify(rows, null, 2));
+            console.log(objs)
+			for (var key in objs) {
+				if (objs.hasOwnProperty(key)) {
+				  reply = reply + '## Reprimand: '+(+key+1)+'\n';
+				  var obj = objs[key];
+				  reply = reply + 'reason: '+obj.reason+'\n';
+				  reply = reply + 'creation date: '+obj.createdAt+'\n';
+				  reply = reply + 'creator name: '+obj.creatorName+'\n';
+				}
+			  }
+            await interaction.reply({content: `# Your reprimandings:\n${reply}`, flags: MessageFlags.Ephemeral });
         
 		}
 		catch (error) {
-			console.log('An error occurred in module "reprimandlist":\n' + error);
+			console.log('An error occurred in module "reprimandget":\n' + error);
 			return void interaction.followUp({
 				content: 'Something went wrong!',
 			});
