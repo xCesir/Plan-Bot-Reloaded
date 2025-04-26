@@ -178,10 +178,19 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
    Run the following SQL commands to create the table:
    ```sql
    CREATE TABLE channelDupe (
-     channelID varchar(255) NOT NULL,
+     channelID VARCHAR(255) NOT NULL,
      name VARCHAR(255) NOT NULL,
      groupID varchar(255) NOT NULL,
      CONSTRAINT channelDupe_pk PRIMARY KEY (channelID)
+   );
+   ```
+   ```sql
+   CREATE TABLE reprimand (
+   userID VARCHAR(255) NOT NULL,
+   reason VARCHAR(255) NOT NULL,
+   createdAt VARCHAR(24) NOT NULL,
+   ID INT NOT NULL AUTO_INCREMENT,
+   CONSTRAINT reprimand_pk PRIMARY KEY (ID)
    );
    ```
 
