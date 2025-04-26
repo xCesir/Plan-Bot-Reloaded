@@ -187,8 +187,10 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
    ```sql
    CREATE TABLE reprimand (
    userID VARCHAR(255) NOT NULL,
-   reason VARCHAR(255) NOT NULL,
+   reason VARCHAR(500) NOT NULL,
    createdAt VARCHAR(24) NOT NULL,
+   creatorId VARCHAR(255) NOT NULL,
+   creatorName VARCHAR(255) NOT NULL,
    ID INT NOT NULL AUTO_INCREMENT,
    CONSTRAINT reprimand_pk PRIMARY KEY (ID)
    );

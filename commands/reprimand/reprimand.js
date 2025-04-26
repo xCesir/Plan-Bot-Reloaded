@@ -22,12 +22,14 @@ module.exports = {
             const target = await interaction.options.getMember('target');
             const targetId = target?.id;
             const reason = await interaction.options.getString('reason') ?? 'No reason provided';
+			const creatorId = await interaction.user.id;
+			const creatorName = await interaction.user.username;
             const d = new Date();
 
             console.log(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}`);
 
 			
-            const rows = await dbquery('INSERT INTO reprimand(userID,reason,createdAt) value (?,?,?)', [targetId, reason, d]);
+            const rows = await dbquery('INSERT INTO reprimand(userID,reason,createdAt,creatorId,creatorName) value (?,?,?,?,?)', [targetId, reason, d, creatorId, creatorName]);
             BigInt.prototype.toJSON = function() {
                 return JSON.rawJSON(this.toString());
             };
