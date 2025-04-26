@@ -209,7 +209,10 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
    ```bash
    pm2 start index.js --name Plan-Bot-Reloaded --watch
    ```
-
+   and with additional logging,  if you're using `--watch` having the Log in the Bot directory will trigger `--watch` flag
+   ```bash
+   pm2 start index.js --name Plan-Bot-Reloaded --watch --log ../Plan-Bot-Reloaded.log
+   ```
 2. **Save the PM2 process list**:
    Ensure PM2 automatically starts the bot on system reboot:
    ```bash
