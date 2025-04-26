@@ -32,7 +32,7 @@ module.exports = {
                 return JSON.rawJSON(this.toString());
             };
             console.log(JSON.stringify(rows));
-            interaction.reply(JSON.stringify(rows, null, 2));
+			interaction.reply(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}\n`+JSON.stringify(rows, null, 2));
         
 		}
 		catch (error) {

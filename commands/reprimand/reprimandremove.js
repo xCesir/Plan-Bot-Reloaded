@@ -29,7 +29,7 @@ module.exports = {
             const reason = await interaction.options.getString('reason') ?? 'No reason provided';
             const id = await interaction.options.getString('id');
 
-            console.log(`Reprimand removed from ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}`);
+            console.log(`Reprimand removed from ${target}, displayName ${target.displayName}, id ${targetId} for reason: ${reason}`);
 
 			
             const rows = await dbquery('DELETE FROM reprimand WHERE userID = (?) and ID = (?)', [targetId, id]);
@@ -37,7 +37,8 @@ module.exports = {
                 return JSON.rawJSON(this.toString());
             };
             console.log(JSON.stringify(rows));
-            interaction.reply(JSON.stringify(rows, null, 2));
+			interaction.reply(`Reprimand removed from ${target}, displayName ${target.displayName}, id ${targetId} for reason: ${reason}\n`+JSON.stringify(rows, null, 2));
+
         
 		}
 		catch (error) {

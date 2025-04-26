@@ -23,7 +23,7 @@ module.exports = {
                 return JSON.rawJSON(this.toString());
             };
             console.log(JSON.stringify(rows));
-            interaction.reply(JSON.stringify(rows, null, 2));
+			interaction.reply(`Listing reprimanding for ${target}, displayName: ${target.displayName}, id ${targetId}\n`+JSON.stringify(rows, null, 2));
         
 		}
 		catch (error) {

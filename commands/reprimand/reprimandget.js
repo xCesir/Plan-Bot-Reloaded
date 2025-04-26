@@ -20,7 +20,7 @@ module.exports = {
             //interaction.reply(JSON.stringify(rows, null, 2));
             const reply = JSON.stringify(rows, null, 2);
             console.log(reply)
-            await interaction.reply({content: `${reply}`, flags: MessageFlags.Ephemeral });
+            await interaction.reply({content: `Your reprimandings:\n${reply}`, flags: MessageFlags.Ephemeral });
         
 		}
 		catch (error) {
