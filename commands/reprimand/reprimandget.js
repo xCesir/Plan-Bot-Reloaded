@@ -21,13 +21,13 @@ module.exports = {
 			let reply = '';
 			const objs = JSON.parse(JSON.stringify(rows, null, 2));
 			console.log(objs);
-			for (let key in objs) {
+			for (const key in objs) {
 				if (Object.prototype.hasOwnProperty.call(objs, key)) {
-				  reply = reply + '## Reprimand: '+(+key+1)+'\n';
-				  let obj = objs[key];
-				  reply = reply + 'reason: '+obj.reason+'\n';
-				  reply = reply + 'creation date: '+obj.createdAt+'\n';
-				  reply = reply + 'creator name: '+obj.creatorName+'\n';
+				  reply = reply + '## Reprimand: ' + (+key + 1) + '\n';
+				  const obj = objs[key];
+				  reply = reply + 'reason: ' + obj.reason + '\n';
+				  reply = reply + 'creation date: ' + obj.createdAt + '\n';
+				  reply = reply + 'creator name: ' + obj.creatorName + '\n';
 				}
 			  }
 			if (reply === '') {

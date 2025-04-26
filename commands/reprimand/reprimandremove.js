@@ -15,31 +15,31 @@ module.exports = {
 			option
 				.setName('id')
 				.setDescription('ID of the reprimand')
-                .setRequired(true))
-        .addStringOption(option =>
-            option
-                .setName('reason')
-                .setDescription('The reason for banning'))
+				.setRequired(true))
+		.addStringOption(option =>
+			option
+				.setName('reason')
+				.setDescription('The reason for banning'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
 		.setContexts(InteractionContextType.Guild),
 	async execute(interaction) {
 		try {
-            const target = await interaction.options.getMember('target');
-            const targetId = target?.id;
-            const reason = await interaction.options.getString('reason') ?? 'No reason provided';
-            const id = await interaction.options.getString('id');
+			const target = await interaction.options.getMember('target');
+			const targetId = target?.id;
+			const reason = await interaction.options.getString('reason') ?? 'No reason provided';
+			const id = await interaction.options.getString('id');
 
-            console.log(`Reprimand removed from ${target}, displayName ${target.displayName}, id ${targetId} for reason: ${reason}`);
+			console.log(`Reprimand removed from ${target}, displayName ${target.displayName}, id ${targetId} for reason: ${reason}`);
 
-			
-            const rows = await dbquery('DELETE FROM reprimand WHERE userID = (?) and ID = (?)', [targetId, id]);
-            BigInt.prototype.toJSON = function() {
-                return JSON.rawJSON(this.toString());
-            };
-            console.log(JSON.stringify(rows));
+
+			const rows = await dbquery('DELETE FROM reprimand WHERE userID = (?) and ID = (?)', [targetId, id]);
+			BigInt.prototype.toJSON = function() {
+				return JSON.rawJSON(this.toString());
+			};
+			console.log(JSON.stringify(rows));
 			interaction.reply(`Reprimand removed from ${target}, displayName ${target.displayName}, id ${targetId} for reason: ${reason}\n`+JSON.stringify(rows, null, 2));
 
-        
+
 		}
 		catch (error) {
 			console.log('An error occurred in module "reprimandremove":\n' + error);

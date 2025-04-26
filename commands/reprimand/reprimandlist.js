@@ -15,16 +15,16 @@ module.exports = {
 		.setContexts(InteractionContextType.Guild),
 	async execute(interaction) {
 		try {
-            const target = await interaction.options.getMember('target');
-            const targetId = target?.id;
+			const target = await interaction.options.getMember('target');
+			const targetId = target?.id;
 
-            const rows = await dbquery('SELECT * FROM reprimand WHERe userID=(?)', [targetId]);
-            BigInt.prototype.toJSON = function() {
-                return JSON.rawJSON(this.toString());
-            };
-            console.log(JSON.stringify(rows));
+			const rows = await dbquery('SELECT * FROM reprimand WHERE userID=(?)', [targetId]);
+			BigInt.prototype.toJSON = function() {
+				return JSON.rawJSON(this.toString());
+			};
+			console.log(JSON.stringify(rows));
 			interaction.reply(`Listing reprimanding for ${target}, displayName: ${target.displayName}, id ${targetId}\n`+JSON.stringify(rows, null, 2));
-        
+
 		}
 		catch (error) {
 			console.log('An error occurred in module "reprimandlist":\n' + error);
