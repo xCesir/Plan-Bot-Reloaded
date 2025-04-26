@@ -31,7 +31,7 @@ module.exports = {
 				}
 			  }
 			if (reply === '') {
-				return await interaction.reply({content: '# Your reprimandings:\n No reprimandings found', flags: MessageFlags.Ephemeral });
+				return await interaction.reply({ content: '# Your reprimandings:\n No reprimandings found', flags: MessageFlags.Ephemeral });
 			}
 			return await interaction.reply({ content: `# Your reprimandings:\n${reply}`, flags: MessageFlags.Ephemeral });
 

@@ -23,7 +23,26 @@ module.exports = {
 				return JSON.rawJSON(this.toString());
 			};
 			console.log(JSON.stringify(rows));
-			interaction.reply(`Listing reprimanding for ${target}, displayName: ${target.displayName}, id ${targetId}\n`+JSON.stringify(rows, null, 2));
+			// interaction.reply(JSON.stringify(rows, null, 2));
+			let reply = '';
+			const objs = JSON.parse(JSON.stringify(rows, null, 2));
+			console.log(objs);
+			for (const key in objs) {
+				if (Object.prototype.hasOwnProperty.call(objs, key)) {
+							  reply = reply + '## Reprimand: ' + (+key + 1) + '\n';
+							  const obj = objs[key];
+							  reply = reply + 'userID: ' + obj.userID + '\n';
+							  reply = reply + 'reason: ' + obj.reason + '\n';
+							  reply = reply + 'creation date: ' + obj.createdAt + '\n';
+							  reply = reply + 'creator name: ' + obj.creatorName + '\n';
+							  reply = reply + 'creator id: ' + obj.creatorId + '\n';
+				}
+						  }
+			if (reply === '') {
+				return await interaction.reply(`Listing reprimanding for ${target}, displayName: "${target.displayName}", id: "${targetId}"\nNo reprimandings found`);
+			}
+			return interaction.reply(`# Listing reprimanding for ${target}, displayName: "${target.displayName}", id: "${targetId}"\n` + reply);
+
 
 		}
 		catch (error) {

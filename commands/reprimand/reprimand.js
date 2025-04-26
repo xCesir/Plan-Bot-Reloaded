@@ -35,7 +35,7 @@ module.exports = {
 			const response = JSON.parse(JSON.stringify(rows));
 			console.log(response);
 			if (response.affectedRows === 1 && response.warningStatus === 0) {
-				return await interaction.reply(`Reprimanding ${target}, displayName ${target.displayName} and id ${targetId} for reason: ${reason}\n created from ${creatorName}, id ${creatorId}\n`);
+				return await interaction.reply(`Reprimanding ${target}, displayName: "${target.displayName}" and id: "${targetId}" for reason: "${reason}"\ncreated from ${creatorName}, id ${creatorId}\n`);
 			}
 			return await interaction.reply('Somethins went wrong! Check reprimand status with "reprimandlist"');
 
