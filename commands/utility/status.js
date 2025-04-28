@@ -25,14 +25,17 @@ module.exports = {
 				let reply = '# Status:\n';
 				reply = reply + '## ID: ' + parsedData[0].pm2_env.pm_id + '\n';
 				reply = reply + '## pid: ' + parsedData[0].pid + '\n';
+				reply = reply + '## user: ' + parsedData[0].pm2_env.username + '\n';
 				reply = reply + '## name: ' + parsedData[0].pm2_env.name + '\n';
 				reply = reply + '## namespace: ' + parsedData[0].pm2_env.namespace + '\n';
 				reply = reply + '## status: ' + parsedData[0].pm2_env.status + '\n';
 				reply = reply + '## pm_uptime: ' + (Date.now() - parsedData[0].pm2_env.pm_uptime) + ' ms\n';
+				reply = reply + '## exec_mode: ' + parsedData[0].pm2_env.exec_mode + '\n';
 				reply = reply + '## restarts ↺: ' + parsedData[0].pm2_env.restart_time + '\n';
 				reply = reply + '## version: ' + parsedData[0].pm2_env.version + '\n';
 				reply = reply + '## cpu: ' + parsedData[0].monit.cpu + '% \n';
 				reply = reply + '## memory: ' + (parsedData[0].monit.memory / 1000000) + ' mb\n';
+				reply = reply + '## watching: ' + parsedData[0].pm2_env.watch + '\n';
 				interaction.reply(reply);
 			  }
 			catch (err) {
