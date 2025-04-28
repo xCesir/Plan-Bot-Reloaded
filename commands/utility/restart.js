@@ -1,14 +1,24 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { exec } = require('child_process');
 
 module.exports = {
 	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('restart')
-		.setDescription('Caution! This command will cause the bot to throw an error (and restart).')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDescription('Caution! This command will restart the bot.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
     	async execute(interaction) {
-		console.log(Date.now() + ': ' + `The Bot was restartet by ${interaction.user.username} with id ${interaction.user.id}`);
-		    await interaction.reply('Bye! If properly setup I will restart immediatly after');
-		    throw new Error('Bye!');
+		await interaction.reply('Bye! If properly setup, I will restart immediately after.');
+		exec('pm2 restart 0', (error, stdout, stderr) => {
+			if (error) {
+				console.log(`error: ${error.message}`);
+				return;
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return;
+			}
+			console.log(`stdout: ${stdout}`);
+		});
 	},
 };
