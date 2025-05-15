@@ -14,14 +14,20 @@ module.exports = {
 		try {
 			const userId = interaction.options.getString('userid').toLowerCase();
 			const rep = await interaction.guild.members.ban(userId);
-			console.log(rep);
-			interaction.reply(rep);
+			console.log(`User banned: ${rep}`);
+			if (rep === userId) {
+				return interaction.reply(`User with id ${userId} banned successfully!`);
+			}
+			interaction.reply('Something went wrong!');
 		}
 		catch (error) {
-			console.log('An error occurred in module "ban":\n' + error);
-			return void interaction.followUp({
-				content: 'Something went wrong!',
-			});
+			if (error == 'DiscordAPIError[10013]: Unknown User') {
+				interaction.reply('Not a valid userId');
+			}
+			else {
+				console.log('An error occurred in module "ban":\n' + error);
+				interaction.reply('Something went wrong!');
+			}
 		}
 	},
 };
