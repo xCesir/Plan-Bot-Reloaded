@@ -11,6 +11,8 @@
 	"goodbyeMessage": "Farewell $(member)!",
 	"autoRole": "",
 	"enableAutoRole": "false",
+	"readyChannel": "995756429526978622",
+	"readyMessage": "Ready!",
 	"logChannelCreate": "true",
 	"logChannelDelete": "true",
 	"logGuildBanAdd": "true",

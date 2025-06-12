@@ -10,7 +10,7 @@ module.exports = {
 			option.setName('channelid')
 				.setDescription('Enter a voice channel ID.')
 				.setRequired(true))
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 	async execute(interaction) {
 
 		try {

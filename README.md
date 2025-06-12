@@ -178,10 +178,21 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
    Run the following SQL commands to create the table:
    ```sql
    CREATE TABLE channelDupe (
-     channelID varchar(255) NOT NULL,
+     channelID VARCHAR(255) NOT NULL,
      name VARCHAR(255) NOT NULL,
      groupID varchar(255) NOT NULL,
      CONSTRAINT channelDupe_pk PRIMARY KEY (channelID)
+   );
+   ```
+   ```sql
+   CREATE TABLE reprimand (
+   userID VARCHAR(255) NOT NULL,
+   reason VARCHAR(500) NOT NULL,
+   createdAt VARCHAR(24) NOT NULL,
+   creatorId VARCHAR(255) NOT NULL,
+   creatorName VARCHAR(255) NOT NULL,
+   ID INT NOT NULL AUTO_INCREMENT,
+   CONSTRAINT reprimand_pk PRIMARY KEY (ID)
    );
    ```
 
@@ -198,7 +209,10 @@ If you wish to enable channel duplication, you'll need to set up MariaDB.
    ```bash
    pm2 start index.js --name Plan-Bot-Reloaded --watch
    ```
-
+   and with additional logging,  if you're using `--watch` having the Log in the Bot directory will trigger `--watch` flag
+   ```bash
+   pm2 start index.js --name Plan-Bot-Reloaded --watch --log ../Plan-Bot-Reloaded.log
+   ```
 2. **Save the PM2 process list**:
    Ensure PM2 automatically starts the bot on system reboot:
    ```bash

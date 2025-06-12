@@ -10,7 +10,7 @@ module.exports = {
 			option.setName('channelid')
 				.setDescription('Enter a voice channel ID.')
 				.setRequired(true))
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 	async execute(interaction) {
 		try {
 			const channelID = interaction.options.getString('channelid').toLowerCase();
@@ -25,7 +25,7 @@ module.exports = {
 					return JSON.rawJSON(this.toString());
 				};
 				console.log(JSON.stringify(rows));
-				interaction.reply(JSON.stringify(rows, null, 2));
+				await interaction.reply(JSON.stringify(rows, null, 2));
 			}
 			interaction.reply('Something went wrong!');
 		}

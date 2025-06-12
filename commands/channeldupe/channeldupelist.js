@@ -6,7 +6,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('channeldupelist')
 		.setDescription('List voice channel to duplicate.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
 	async execute(interaction) {
 		try {
 			const rows = await dbquery('SELECT * FROM channelDupe');
